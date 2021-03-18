@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "transport_name": "Bike",
+    "price": "50",
+    "img":"https://i.ibb.co/hfGMYCg/Frame.png"
+  }, {
+    "id": 2,
+    "transport_name": "Car",
+    "price": "70",
+    "img":"https://i.ibb.co/9gqScPf/Frame-2.png"
+  }, {
+    "id": 3,
+    "transport_name": "Bus",
+    "price": "65",
+    "img":"https://i.ibb.co/ykNSMhs/Frame-1.png"
+  }, {
+    "id": 4,
+    "transport_name": "Train",
+    "price": "35",
+    "img":"https://i.ibb.co/rdJcBm1/Group.png"
+  }]
