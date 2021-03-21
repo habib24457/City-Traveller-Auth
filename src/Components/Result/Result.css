@@ -11,3 +11,23 @@
   height: 600px;
   width:600px;
 }
+
+.search-result{
+  margin-top: 30px;
+  background-color: aliceblue;
+}
+
+.search-result img{
+width: 70px;
+height: 70px;
+}
+
+.location-detail{
+  margin-bottom: 20px;
+  background-color: rgb(239, 108, 61);
+  border-radius: 5px;
+}
+
+.location-detail h4{
+  color:white;
+}

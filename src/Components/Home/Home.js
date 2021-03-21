@@ -46,7 +46,7 @@ const Home = () => {
             rides.map(ride=> 
             
             <div key={ride.id} className="col-md-3">
-             <Link to={"/result"}> 
+             <Link to={`/result/${ride.id}`}> 
             <Card style={{ width: '15rem',height: '18rem',cursor: 'pointer'}}>
             <Card.Img variant="top" src={ride.img} />
              <Card.Body>

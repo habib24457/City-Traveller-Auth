@@ -28,7 +28,7 @@ function App() {
           <Home/>
          </Route>
 
-         <PrivateRoute path="/result">
+         <PrivateRoute path="/result/:rideId">
           <Result></Result>
           </PrivateRoute>
 
