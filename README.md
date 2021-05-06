@@ -8,7 +8,16 @@ Features:
 
 
 Tools:  
-->ReactJS is used to build the frontend.  
+->ReactJS is used to build the frontend. 
+->Use of context API.
 ->Private route leads the user to the login page.  
 ->Firebase Authentication and Hosting.  
+
+How it works:  
+->At first the vehicles a´with their information is created and saved as a json file by me.  
+and the data is shown on the home page for the user to select.  
+
+->After selecting a vehicle, the user will be redirected to a login page for authentication.  
+Then the user can search for location and book tickets.  
+
 
