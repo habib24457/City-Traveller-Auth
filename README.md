@@ -13,7 +13,7 @@ Tools:
 ->Private route leads the user to the login page.  
 ->Firebase Authentication and Hosting.  
 
-How it works:  
+How does it work?:  
 ->At first the vehicles a´with their information is created and saved as a json file by me.  
 and the data is shown on the home page for the user to select.  
 
