@@ -1,6 +1,15 @@
 .rides-design{
-    margin-top: 200px;
+    margin-top: 100px;
    
+}
+
+.ride-name{
+    border:'2px solid blue';
+    background:'black';
+}
+
+.footer{
+    color:black;
 }
 
 

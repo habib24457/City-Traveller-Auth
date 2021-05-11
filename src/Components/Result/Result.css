@@ -1,6 +1,7 @@
 .search-design {
   background-color: aliceblue;
   padding: 30px;
+  height: 300px;
 }
 
 .rowDesign {
@@ -30,4 +31,20 @@ height: 70px;
 
 .location-detail h4{
   color:white;
+}
+
+.ticket-design{
+  background-color: aliceblue;
+  height: 300px;
+  width: 100px;
+}
+
+.ride-image{
+  transition: all 0.2s ease-in 0s;
+}
+
+.ride-image:hover{
+  cursor: pointer;
+  transform:scale(1.3);
+  overflow: hidden;
 }
