@@ -12,6 +12,8 @@ Tools:
 ->Use of context API.
 ->Private route leads the user to the login page.  
 ->Firebase Authentication and Hosting.  
+->Google map integration  
+->Stripe payment method integration  
 
 How does it work?:  
 ->At first the vehicles a´with their information is created and saved as a json file by me.  
@@ -19,5 +21,8 @@ and the data is shown on the home page for the user to select.
 
 ->After selecting a vehicle, the user will be redirected to a login page for authentication.  
 Then the user can search for location and book tickets.  
+
+->Finally the user can go to the payment page to finish payment.  
+
 
 
