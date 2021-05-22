@@ -3,7 +3,7 @@ import ridesData from '../../Data/Data.json';
 import { UserContext } from "../../App";
 import './Result.css';
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import background from '../../Bg.png';
 import Map from './Map';
 //import {Link} from 'react-router-dom';
@@ -13,6 +13,8 @@ import Map from './Map';
 const Result = () => {
     let { rideId } = useParams();
     const [ride, setRide] = useState({});
+    const history = useHistory();
+   // const [userTicket,setUserTicket] = useState({});
 
     const [youngTicket, setYoungTicket] = useState("0");
     const [youngTPrice, setYoungTPrice] = useState(0);
@@ -90,11 +92,16 @@ const Result = () => {
             let ticketAmount = document.getElementById("youngTicketAmount").value;
 
             let ticketAmountNumber = parseInt(ticketAmount);
-            let finalTicketAmount = ticketAmountNumber - 1;
-            let ticketPrice = 100 * finalTicketAmount;
-            setYoungTicket(finalTicketAmount);
-            setYoungTPrice(ticketPrice);
-            calculateTotal(ticketPrice);
+            if (ticketAmountNumber > 0) {
+                let finalTicketAmount = ticketAmountNumber - 1;
+                let ticketPrice = 100 * finalTicketAmount;
+                setYoungTicket(finalTicketAmount);
+                setYoungTPrice(ticketPrice);
+                calculateTotal(ticketPrice);
+            } else {
+                alert('Ticket amount can not be negative');
+            }
+
         }
 
 
@@ -111,15 +118,34 @@ const Result = () => {
         if (e.target.getAttribute('name') === 'adultMinus') {
             let ticketAmount = document.getElementById("adultTicketAmount").value;
             let ticketAmountNumber = parseInt(ticketAmount);
-            let finalTicketAmount = ticketAmountNumber - 1;
-            let ticketPrice = 150 * finalTicketAmount;
-            setAdultTicket(finalTicketAmount);
-            setAdultTPrice(ticketPrice);
-            calculateTotal(ticketPrice);
+
+            if (ticketAmountNumber > 0) {
+                let finalTicketAmount = ticketAmountNumber - 1;
+                let ticketPrice = 150 * finalTicketAmount;
+                setAdultTicket(finalTicketAmount);
+                setAdultTPrice(ticketPrice);
+                calculateTotal(ticketPrice);
+            } else {
+                alert('Ticket amount cannot be negative');
+            }
         }
 
     }
 
+    const checkBook = () => {
+        const ticket = { ...searchResult };
+        ticket.total = adultTPrice + youngTPrice;
+        console.log(ticket);
+
+        if (searchResult.success && ticket.total > 0) {
+            const userData = {...loggedinUser};
+            userData.ticketData=ticket;
+            setLoggedinUser(userData);
+            history.push('/payment')
+        } else {
+            alert('Please choose your location or Purchase ticket');
+        }
+    }
 
 
     return (
@@ -155,7 +181,11 @@ const Result = () => {
                             <input onBlur={handleBlur} className="form-control" type="text"
                                 placeholder="Pick to" name="locationTo" id="toLoc" required />
                             <br />
-                            <Button onClick={handleSearch} type="submit" className="btn btn-warning">Search</Button>
+                           
+                                <Button onClick={handleSearch} type="submit"
+                                    className="btn btn-warning">Search</Button>
+                        
+
                         </Form>
                         {
                             searchResult.success &&
@@ -197,9 +227,7 @@ const Result = () => {
                         <p>Sub Total Adult = {adultTPrice} </p>
                         <hr />
                         <h3>Total ={adultTPrice + youngTPrice}€ </h3>
-                        <Link to="/payment">
-                            <Button variant="warning">Book Your Ride</Button>
-                        </Link>
+                            <Button onClick={() => checkBook()} variant="warning">Book Your Ride</Button>
                     </div>
                 </div>
 

@@ -175,6 +175,11 @@ console.log(error);
           </div>
         </div>
 
+        <div className="row d-flex justify-content-center mb-5">
+              <button onClick={handleGoogleSignIn} className="btn btn-info google-btn-design">Sign in With Google</button>
+              
+            </div>
+            <hr/>
         <div className="row mt-5">
           <div className="col-md-12">
             <div className="bloc-tabs">
@@ -214,6 +219,10 @@ console.log(error);
                 </div>
 
                 <div className={toggleState === 2 ? "content  active-content" : "content"}>
+                  <ul>
+                    <li>Email: example@example.com</li>
+                    <li>Password must contain one Alphabet and at least 6 characters</li>
+                  </ul>
                   <div class="col-xs-1" align="center">
                     <p style={{ marginTop: "10px", color: "red" }}>{user.error}</p>
                     <p style={{ marginTop: "10px", color: "red" }}>{user.errorMessage}</p>
@@ -235,9 +244,7 @@ console.log(error);
             </div>
 
 
-            <div className="row d-flex justify-content-center">
-              <button onClick={handleGoogleSignIn} className="btn btn-info google-btn-design">Sign in With Google</button>
-            </div>
+            
           </div>
         </div>
       </div>
