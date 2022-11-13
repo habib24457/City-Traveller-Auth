@@ -1,13 +1,21 @@
-import React from 'react';
+import React,{ useContext} from 'react';
 import { Container, Row, Col, Navbar } from 'react-bootstrap';
 import { Elements } from '@stripe/react-stripe-js';
+//import {useParams} from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './PaymentCard';
 import loginPic from '../../Bg.png';
+import {UserContext} from "../../App";
+import './Payment.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTicketAlt,faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const stripePromise = loadStripe('pk_test_51IhJfaKSu2UCBkjrmudHYyuSve1JRUdu2YnlbhaIRDGM4MM4sHkJUWrZXvficsncoRRozsKBe8QwyVaIJikKpEyp00qYSKyjSj');
 
 const Payment = () => {
+ const [loggedinUser] = useContext(UserContext);
+ console.log(loggedinUser.ticketData);       
+
     return (
         <div className="BG" style={{
             backgroundImage: `url(${loginPic})`,
@@ -28,16 +36,23 @@ const Payment = () => {
 
             <Row className="mt-5 pt-5">
                 <Col>
-                    <h5>This is an example of paymentMethod using Stripe:</h5>
+                      <div  className="final-ticket-design">
+                      <h5> <FontAwesomeIcon icon={faTicketAlt}/> Your total Ticket price is: {loggedinUser?.ticketData?.total}$</h5>
+                        <h5>
+                        <FontAwesomeIcon icon={faMapMarkerAlt}/> 
+                            Your Destination
+                            </h5>
+                        <p> <span className="text-success">From:</span>  {loggedinUser?.ticketData?.locationFrom} | <span className="text-success">To:</span> {loggedinUser?.ticketData?.locationTo}</p>
+                      </div>
+                </Col>
+                <Col>
+                <h5>This is an example of paymentMethod using Stripe:</h5>
                     <ul>
                         <li>Demo Card number is: 4242 4242 4242 4242</li>
                         <li>Card data is: Any future date</li>
                         <li>CVC: You can enter any 3 digit number</li>
                         <li>Zip: Enter your zip: eg. 45128</li>
                     </ul>
-                </Col>
-                <Col>
-                    <h4 className="mb-5 all-text-color">Payment</h4>
                     <Elements stripe={stripePromise}>
                         <CheckoutForm></CheckoutForm>
                     </Elements>

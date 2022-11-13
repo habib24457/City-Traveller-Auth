@@ -37,13 +37,13 @@ function App() {
             <LoginPage></LoginPage>
           </Route>
 
-          <Route path="">
+          <Route path="/payment">
             <Payment></Payment>
           </Route>
 
-          <Route path="/">
-            <Home></Home>
-          </Route>
+         <Route path="/">
+           <Home></Home>
+         </Route>
 
           <Route path="*">
             <NoMatch></NoMatch>
