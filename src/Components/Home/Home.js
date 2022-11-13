@@ -39,9 +39,6 @@ const Home = () => {
               </Navbar.Brand>
               <Navbar.Collapse className="justify-content-end">
                 <Nav>
-                  <Nav.Link href="/home">
-                    <Button className="btn btn-secondary">Home</Button>
-                  </Nav.Link>
                   <Link to={"/login"}>
                     <Button className="btn btn-danger">Login</Button>
                   </Link>
