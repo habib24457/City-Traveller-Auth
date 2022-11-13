@@ -108,64 +108,9 @@ const Result = () => {
       calculateTotal(ticketPrice);
     }
 
-    const handleYoungTicket = (e) => {
-        e.preventDefault();
-        // console.log("Zara",e.target.getAttribute('value'));
-
-        if (e.target.getAttribute('name') === 'youngPlus') {
-
-            let ticketAmount = document.getElementById("youngTicketAmount").value;
-
-            let ticketAmountNumber = parseInt(ticketAmount);
-
-            let finalTicketAmount = ticketAmountNumber + 1;
-            let ticketPrice = 100 * finalTicketAmount;
-            setYoungTPrice(ticketPrice);
-            setYoungTicket(finalTicketAmount);
-            calculateTotal(ticketPrice);
-        }
-
-        if (e.target.getAttribute('name') === 'youngMinus') {
-            let ticketAmount = document.getElementById("youngTicketAmount").value;
-
-            let ticketAmountNumber = parseInt(ticketAmount);
-            if (ticketAmountNumber > 0) {
-                let finalTicketAmount = ticketAmountNumber - 1;
-                let ticketPrice = 100 * finalTicketAmount;
-                setYoungTicket(finalTicketAmount);
-                setYoungTPrice(ticketPrice);
-                calculateTotal(ticketPrice);
-            } else {
-                alert('Ticket amount can not be negative');
-            }
-
-        }
-
-
-        if (e.target.getAttribute('name') === 'adultPlus') {
-            let ticketAmount = document.getElementById("adultTicketAmount").value;
-            let ticketAmountNumber = parseInt(ticketAmount);
-            let finalTicketAmount = ticketAmountNumber + 1;
-            let ticketPrice = 150 * finalTicketAmount;
-            setAdultTicket(finalTicketAmount);
-            setAdultTPrice(ticketPrice);
-            calculateTotal(ticketPrice);
-        }
-
-        if (e.target.getAttribute('name') === 'adultMinus') {
-            let ticketAmount = document.getElementById("adultTicketAmount").value;
-            let ticketAmountNumber = parseInt(ticketAmount);
-
-            if (ticketAmountNumber > 0) {
-                let finalTicketAmount = ticketAmountNumber - 1;
-                let ticketPrice = 150 * finalTicketAmount;
-                setAdultTicket(finalTicketAmount);
-                setAdultTPrice(ticketPrice);
-                calculateTotal(ticketPrice);
-            } else {
-                alert('Ticket amount cannot be negative');
-            }
-        }
+    if (e.target.getAttribute("name") === "adultMinus") {
+      let ticketAmount = document.getElementById("adultTicketAmount").value;
+      let ticketAmountNumber = parseInt(ticketAmount);
 
       if (ticketAmountNumber > 0) {
         let finalTicketAmount = ticketAmountNumber - 1;
@@ -179,20 +124,10 @@ const Result = () => {
     }
   };
 
-    const checkBook = () => {
-        const ticket = { ...searchResult };
-        ticket.total = adultTPrice + youngTPrice;
-        console.log(ticket);
-
-        if (searchResult.success && ticket.total > 0) {
-            const userData = {...loggedinUser};
-            userData.ticketData=ticket;
-            setLoggedinUser(userData);
-            history.push('/payment')
-        } else {
-            alert('Please choose your location or Purchase ticket');
-        }
-    }
+  const checkBook = () => {
+    const ticket = { ...searchResult };
+    ticket.total = adultTPrice + youngTPrice;
+    console.log(ticket);
 
     if (searchResult.success && ticket.total > 0) {
       const userData = { ...loggedinUser };
@@ -336,7 +271,9 @@ const Result = () => {
 
         <div className="row">
           <div className="col-md-12 text-center mt-3">
-            <p>Google map API wasn't purchased.</p>
+            <h3>
+              Google map isn't showing because I didn't purchase google map API
+            </h3>
             <br />
             <Map></Map>
           </div>
