@@ -271,9 +271,7 @@ const Result = () => {
 
         <div className="row">
           <div className="col-md-12 text-center mt-3">
-            <h3>
-              Google map isn't showing because I didn't purchase google map API
-            </h3>
+            <p>Google map api was not purchased </p>
             <br />
             <Map></Map>
           </div>
